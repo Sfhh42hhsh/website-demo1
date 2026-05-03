@@ -10,34 +10,85 @@
       margin: 0;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white;
     }
 
+    .card {
+      text-align: center;
+      padding: 30px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+    }
+
     img {
-      width: 200px;
-      height: 200px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid white;
-      margin-bottom: 20px;
+      border: 3px solid #60a5fa;
+      margin-bottom: 15px;
     }
 
     h1 {
       margin: 0;
       font-size: 2rem;
     }
+
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 10px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #60a5fa;
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #3b82f6;
+    }
   </style>
 </head>
 
 <body>
 
-  <img src="a411aa.png" alt="Profile Image">
-  <h1>Ludgecrone</h1>
+  <div class="card">
+
+    <img src="a411aa.png" alt="Profile Image">
+
+    <h1>Ludgecrone</h1>
+
+    <p>Click below to contact me</p>
+
+    <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
+      Open Discord
+    </a>
+
+  </div>
 
 </body>
 </html>
