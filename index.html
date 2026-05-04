@@ -20,12 +20,22 @@
       color: white;
       overflow: hidden;
 
-      /* Background image */
-      background: url("a33.png") no-repeat center center fixed;
-      background-size: cover;
+      /* FIXED BACKGROUND */
+      background: url("a33.png") no-repeat center center;
+      background-size: contain;
+      background-color: #000;
     }
 
-    /* Soft animated overlay (makes it feel alive) */
+    /* Soft overlay so edges look intentional */
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    /* Subtle animated light */
     body::before {
       content: "";
       position: absolute;
@@ -33,6 +43,7 @@
       height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
       animation: moveBg 20s linear infinite;
+      z-index: 0;
     }
 
     @keyframes moveBg {
@@ -47,8 +58,7 @@
       padding: 35px;
       border-radius: 18px;
 
-      /* Clean glass look */
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
@@ -70,8 +80,6 @@
       font-size: 1.9rem;
       letter-spacing: 1px;
       font-weight: 600;
-
-      /* subtle glow */
       text-shadow: 0 0 12px rgba(255,255,255,0.2);
     }
 
@@ -102,13 +110,11 @@
 <body>
 
   <div class="card">
-
     <h1>Ludgecrone</h1>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
       Contact
     </a>
-
   </div>
 
 </body>
