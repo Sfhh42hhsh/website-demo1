@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ludgecrone</title>
 
+  <!-- Clean modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -16,96 +19,115 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: white;
       overflow: hidden;
 
-      /* BACK TO COVER (no bars) */
-      background: url("a33.png") no-repeat center center fixed;
+      /* CENTER THE GIRL */
+      background: url("a33.png") no-repeat center 65% fixed;
       background-size: cover;
     }
 
-    /* DARK EDGE OVERLAY (hides crop nicely) */
+    /* DARK FADE (lighter than before so we SEE the girl) */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at center,
-        rgba(0,0,0,0.2) 0%,
-        rgba(0,0,0,0.6) 70%,
-        rgba(0,0,0,0.9) 100%);
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.5) 70%,
+        rgba(0,0,0,0.85) 100%);
       z-index: 0;
     }
 
-    /* SUBTLE MOVEMENT */
+    /* SUBTLE MOTION */
     body::before {
       content: "";
       position: absolute;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%);
-      animation: moveBg 25s linear infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.03), transparent 60%);
+      animation: moveBg 30s linear infinite;
       z-index: 0;
     }
 
     @keyframes moveBg {
       0% { transform: translate(0, 0); }
-      50% { transform: translate(-20%, -20%); }
+      50% { transform: translate(-10%, -10%); }
       100% { transform: translate(0, 0); }
     }
 
+    /* GITHUB-STYLE CARD */
     .card {
       position: relative;
       text-align: center;
-      padding: 35px;
-      border-radius: 18px;
+      padding: 28px;
+      border-radius: 12px;
 
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(13,17,23,0.75); /* GitHub dark */
+      backdrop-filter: blur(12px);
 
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 
-      width: 260px;
+      width: 240px;
       z-index: 1;
 
-      transition: transform 0.3s ease;
+      transition: transform 0.25s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
 
+    /* TITLE (smooth + animated) */
     h1 {
       margin: 10px 0;
-      font-size: 1.9rem;
-      letter-spacing: 1px;
+      font-size: 1.8rem;
       font-weight: 600;
-      text-shadow: 0 0 12px rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+
+      background: linear-gradient(90deg, #fff, #bbb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: fadeSlide 1.2s ease;
     }
 
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* BUTTON (github-like) */
     .btn {
       display: inline-block;
-      margin-top: 18px;
-      padding: 10px 18px;
-      border-radius: 10px;
+      margin-top: 16px;
+      padding: 8px 16px;
+      border-radius: 6px;
 
-      background: rgba(255,255,255,0.12);
-      color: white;
+      background: #21262d;
+      color: #c9d1d9;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
 
-      transition: all 0.25s ease;
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+
+      transition: all 0.2s ease;
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 0 15px rgba(255,255,255,0.25);
-      transform: scale(1.05);
+      background: #30363d;
+      border-color: rgba(255,255,255,0.2);
     }
+
   </style>
 </head>
 
