@@ -12,9 +12,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -30,59 +28,65 @@
       background-size: cover;
     }
 
+    /* smooth dark gradient */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
+      background: linear-gradient(to bottom,
         rgba(0,0,0,0.25),
-        rgba(0,0,0,0.6)
-      );
+        rgba(0,0,0,0.7));
       z-index: 0;
     }
 
+    /* subtle moving light */
     body::before {
       content: "";
       position: absolute;
       width: 140%;
       height: 140%;
-      background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%);
-      animation: drift 30s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
+      animation: drift 35s ease-in-out infinite;
       z-index: 0;
     }
 
     @keyframes drift {
-      0% { transform: translate(0, 0); }
-      50% { transform: translate(-4%, -4%); }
-      100% { transform: translate(0, 0); }
+      0% { transform: translate(0,0); }
+      50% { transform: translate(-5%, -5%); }
+      100% { transform: translate(0,0); }
     }
 
+    /* CARD */
     .card {
       position: relative;
       z-index: 1;
-      width: 400px;
-      padding: 55px 45px;
-      border-radius: 20px;
+      width: 420px;
+      padding: 60px 45px 45px;
+      border-radius: 18px;
 
-      background: rgba(20, 20, 25, 0.45);
-      backdrop-filter: blur(14px);
+      background: rgba(20, 20, 25, 0.5);
+      backdrop-filter: blur(16px);
 
       border: 1px solid rgba(255,255,255,0.08);
 
-      box-shadow: 
+      box-shadow:
         0 20px 60px rgba(0,0,0,0.6),
-        inset 0 0 0.5px rgba(255,255,255,0.08);
+        inset 0 0 0.5px rgba(255,255,255,0.1);
 
       text-align: center;
 
       animation: fadeUp 1s ease;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
     }
 
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(25px) scale(0.98);
+        transform: translateY(30px) scale(0.98);
       }
       to {
         opacity: 1;
@@ -90,23 +94,26 @@
       }
     }
 
+    /* TITLE */
     h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 600;
 
-      background: linear-gradient(90deg, #ffffff, #d6d6d6);
+      background: linear-gradient(90deg, #ffffff, #cfcfcf);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      animation: softFade 1.5s ease;
+      letter-spacing: 0.5px;
+
+      animation: glowFade 1.5s ease;
     }
 
-    @keyframes softFade {
+    @keyframes glowFade {
       from {
         opacity: 0;
         transform: translateY(10px);
-        filter: blur(6px);
+        filter: blur(8px);
       }
       to {
         opacity: 1;
@@ -115,20 +122,28 @@
       }
     }
 
+    /* subtitle */
     .subtitle {
-      margin-top: 8px;
-      font-size: 0.9rem;
+      margin-top: 10px;
+      font-size: 0.95rem;
       color: rgba(255,255,255,0.6);
+      animation: fadeIn 2s ease;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* BUTTON */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
 
       margin-top: 30px;
-      padding: 11px 22px;
+      padding: 12px 24px;
       border-radius: 8px;
 
       background: rgba(255,255,255,0.08);
@@ -140,41 +155,46 @@
       border: 1px solid rgba(255,255,255,0.12);
 
       transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ripple hover */
+    .btn::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+
+    .btn:hover::after {
+      width: 200px;
+      height: 200px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.18);
     }
 
     .btn i {
       pointer-events: none;
     }
 
-    .btn:hover {
-      background: rgba(255,255,255,0.18);
-      transform: scale(1.05);
-    }
-
     /* VIEW COUNTER */
     .views {
-      position: absolute;
-      bottom: 15px;
-      right: 20px;
-      z-index: 2;
-
-      font-size: 0.75rem;
+      margin-top: 35px;
+      font-size: 0.85rem;
       color: rgba(255,255,255,0.5);
-      letter-spacing: 0.5px;
-
-      background: rgba(0,0,0,0.25);
-      padding: 6px 10px;
-      border-radius: 8px;
-      backdrop-filter: blur(6px);
-
-      animation: fadeIn 1.5s ease;
+      letter-spacing: 0.3px;
+      animation: fadeIn 2.5s ease;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
   </style>
 </head>
 
@@ -182,21 +202,72 @@
 
   <div class="card">
     <h1>Ludgecrone</h1>
-    <div class="subtitle">this is my only Discord account</div>
+    <div class="subtitle">my only discord account</div>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
       <i class="fab fa-discord"></i>
       Contact
     </a>
+
+    <div class="views">
+      👁 <span id="viewCount">...</span>
+    </div>
   </div>
 
-  <!-- VIEW COUNTER -->
-  <div class="views">
-    👁 <span id="busuanzi_value_site_pv">...</span>
-  </div>
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  <!-- BUSUANZI SCRIPT -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    const firebaseConfig = {
+      apiKey: "AIzaSy...",
+      authDomain: "project-7872506634360583046.firebaseapp.com",
+      projectId: "project-7872506634360583046",
+      storageBucket: "project-7872506634360583046.appspot.com",
+      messagingSenderId: "424103447786",
+      appId: "1:424103447786:web:58c9316900ae9bdf1c5b93"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const viewRef = doc(db, "stats", "views");
+
+    async function updateViews() {
+      const viewed = localStorage.getItem("viewed");
+
+      if (!viewed) {
+        try {
+          const snap = await getDoc(viewRef);
+
+          if (!snap.exists()) {
+            await setDoc(viewRef, { count: 1 });
+            document.getElementById("viewCount").textContent = 1;
+          } else {
+            await updateDoc(viewRef, {
+              count: increment(1)
+            });
+
+            const newSnap = await getDoc(viewRef);
+            document.getElementById("viewCount").textContent = newSnap.data().count;
+          }
+
+          localStorage.setItem("viewed", "true");
+
+        } catch (e) {
+          document.getElementById("viewCount").textContent = "...";
+        }
+      } else {
+        const snap = await getDoc(viewRef);
+        if (snap.exists()) {
+          document.getElementById("viewCount").textContent = snap.data().count;
+        }
+      }
+    }
+
+    updateViews();
+  </script>
 
 </body>
 </html>
