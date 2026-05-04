@@ -20,35 +20,37 @@
       color: white;
       overflow: hidden;
 
-      /* FIXED BACKGROUND */
-      background: url("a33.png") no-repeat center center;
-      background-size: contain;
-      background-color: #000;
+      /* BACK TO COVER (no bars) */
+      background: url("a33.png") no-repeat center center fixed;
+      background-size: cover;
     }
 
-    /* Soft overlay so edges look intentional */
+    /* DARK EDGE OVERLAY (hides crop nicely) */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: radial-gradient(circle at center,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.6) 70%,
+        rgba(0,0,0,0.9) 100%);
       z-index: 0;
     }
 
-    /* Subtle animated light */
+    /* SUBTLE MOVEMENT */
     body::before {
       content: "";
       position: absolute;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
-      animation: moveBg 20s linear infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%);
+      animation: moveBg 25s linear infinite;
       z-index: 0;
     }
 
     @keyframes moveBg {
       0% { transform: translate(0, 0); }
-      50% { transform: translate(-25%, -25%); }
+      50% { transform: translate(-20%, -20%); }
       100% { transform: translate(0, 0); }
     }
 
@@ -58,7 +60,7 @@
       padding: 35px;
       border-radius: 18px;
 
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
