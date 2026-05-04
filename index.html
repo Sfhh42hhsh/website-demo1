@@ -30,7 +30,6 @@
       background-size: cover;
     }
 
-    /* OVERLAY */
     body::after {
       content: "";
       position: absolute;
@@ -43,7 +42,6 @@
       z-index: 0;
     }
 
-    /* BACKGROUND MOTION */
     body::before {
       content: "";
       position: absolute;
@@ -60,14 +58,11 @@
       100% { transform: translate(0, 0); }
     }
 
-    /* CARD */
     .card {
       position: relative;
       z-index: 1;
-
       width: 400px;
       padding: 55px 45px;
-
       border-radius: 20px;
 
       background: rgba(20, 20, 25, 0.45);
@@ -95,7 +90,6 @@
       }
     }
 
-    /* TITLE */
     h1 {
       margin: 0;
       font-size: 2.2rem;
@@ -121,72 +115,19 @@
       }
     }
 
-    /* SUBTEXT */
     .subtitle {
       margin-top: 8px;
       font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
     }
 
-    /* ICON ROW */
-    .icons {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .icon {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-
-      background: rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #e6edf3;
-      font-size: 1.1rem;
-
-      border: 1px solid rgba(255,255,255,0.12);
-
-      cursor: pointer;
-      overflow: hidden;
-
-      transition: all 0.25s ease;
-    }
-
-    /* RIPPLE EFFECT */
-    .icon::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      background: rgba(255,255,255,0.25);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
-    }
-
-    .icon:hover::after {
-      width: 120px;
-      height: 120px;
-      opacity: 0.15;
-    }
-
-    .icon:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: rgba(255,255,255,0.15);
-    }
-
     /* BUTTON */
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
       margin-top: 30px;
       padding: 11px 22px;
       border-radius: 8px;
@@ -202,6 +143,10 @@
       transition: all 0.25s ease;
     }
 
+    .btn i {
+      pointer-events: none; /* icon not clickable */
+    }
+
     .btn:hover {
       background: rgba(255,255,255,0.18);
       transform: scale(1.05);
@@ -214,23 +159,10 @@
 
   <div class="card">
     <h1>Ludgecrone</h1>
-    <div class="subtitle">digital presence</div>
-
-    <div class="icons">
-      <a class="icon" href="https://discord.com/users/260466241309900811" target="_blank">
-        <i class="fab fa-discord"></i>
-      </a>
-
-      <a class="icon" href="#" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-
-      <a class="icon" href="#" target="_blank">
-        <i class="fas fa-globe"></i>
-      </a>
-    </div>
+    <div class="subtitle">my only Discord account</div>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
+      <i class="fab fa-discord"></i>
       Contact
     </a>
   </div>
