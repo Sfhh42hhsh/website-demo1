@@ -151,7 +151,7 @@
       transform: scale(1.05);
     }
 
-    /* VIEW COUNTER (bottom corner) */
+    /* VIEW COUNTER */
     .views {
       position: absolute;
       bottom: 15px;
@@ -191,16 +191,12 @@
   </div>
 
   <!-- VIEW COUNTER -->
-  <div class="views" id="viewCounter">loading...</div>
+  <div class="views">
+    👁 <span id="busuanzi_value_site_pv">...</span>
+  </div>
 
-  <script>
-    fetch("https://api.countapi.xyz/hit/ludgecrone/profile")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("viewCounter").innerText =
-          data.value + " views";
-      });
-  </script>
+  <!-- BUSUANZI SCRIPT -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 </body>
 </html>
