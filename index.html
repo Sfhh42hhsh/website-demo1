@@ -121,7 +121,6 @@
       color: rgba(255,255,255,0.6);
     }
 
-    /* BUTTON */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -144,12 +143,36 @@
     }
 
     .btn i {
-      pointer-events: none; /* icon not clickable */
+      pointer-events: none;
     }
 
     .btn:hover {
       background: rgba(255,255,255,0.18);
       transform: scale(1.05);
+    }
+
+    /* VIEW COUNTER (bottom corner) */
+    .views {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      z-index: 2;
+
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+
+      background: rgba(0,0,0,0.25);
+      padding: 6px 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(6px);
+
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
   </style>
@@ -159,13 +182,25 @@
 
   <div class="card">
     <h1>Ludgecrone</h1>
-    <div class="subtitle">my only Discord account</div>
+    <div class="subtitle">this is my only Discord account</div>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
       <i class="fab fa-discord"></i>
       Contact
     </a>
   </div>
+
+  <!-- VIEW COUNTER -->
+  <div class="views" id="viewCounter">loading...</div>
+
+  <script>
+    fetch("https://api.countapi.xyz/hit/ludgecrone/profile")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("viewCounter").innerText =
+          data.value + " views";
+      });
+  </script>
 
 </body>
 </html>
