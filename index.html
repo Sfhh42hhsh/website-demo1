@@ -13,63 +13,69 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+
+      /* YOUR CUSTOM BACKGROUND */
+      background: url("a33.png") no-repeat center center fixed;
+      background-size: cover;
+
       color: white;
     }
 
     .card {
       text-align: center;
       padding: 30px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
+      border-radius: 20px;
+
+      /* Glass effect */
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+
+      width: 280px;
     }
 
     img {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #60a5fa;
+      border: 2px solid rgba(255,255,255,0.6);
       margin-bottom: 15px;
     }
 
     h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    a {
-      color: #60a5fa;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      margin: 10px 0;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
     }
 
     p {
-      margin-top: 10px;
-      color: #cbd5e1;
-      font-size: 0.95rem;
+      margin-top: 5px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
     }
 
     .btn {
       display: inline-block;
       margin-top: 15px;
-      padding: 10px 15px;
-      border-radius: 8px;
-      background: #60a5fa;
-      color: #0f172a;
+      padding: 10px 18px;
+      border-radius: 10px;
+
+      background: rgba(255,255,255,0.15);
+      color: white;
+
       text-decoration: none;
       font-weight: bold;
-      transition: 0.2s;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
     }
 
     .btn:hover {
-      background: #3b82f6;
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -78,6 +84,7 @@
 
   <div class="card">
 
+    <!-- PROFILE IMAGE (unchanged) -->
     <img src="a411aa.png" alt="Profile Image">
 
     <h1>Ludgecrone</h1>
@@ -85,7 +92,7 @@
     <p>Click below to contact</p>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
-     My only discord
+      My only discord
     </a>
 
   </div>
