@@ -6,6 +6,10 @@
   <title>Ludgecrone</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -13,68 +17,83 @@
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
+      color: white;
+      overflow: hidden;
 
-      /* YOUR CUSTOM BACKGROUND */
+      /* Background image */
       background: url("a33.png") no-repeat center center fixed;
       background-size: cover;
+    }
 
-      color: white;
+    /* Soft animated overlay (makes it feel alive) */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
+      animation: moveBg 20s linear infinite;
+    }
+
+    @keyframes moveBg {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-25%, -25%); }
+      100% { transform: translate(0, 0); }
     }
 
     .card {
+      position: relative;
       text-align: center;
-      padding: 30px;
-      border-radius: 20px;
+      padding: 35px;
+      border-radius: 18px;
 
-      /* Glass effect */
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      /* Clean glass look */
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
-      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 
-      width: 280px;
+      width: 260px;
+      z-index: 1;
+
+      transition: transform 0.3s ease;
     }
 
-    img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.6);
-      margin-bottom: 15px;
+    .card:hover {
+      transform: translateY(-4px);
     }
 
     h1 {
       margin: 10px 0;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       letter-spacing: 1px;
-    }
+      font-weight: 600;
 
-    p {
-      margin-top: 5px;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
+      /* subtle glow */
+      text-shadow: 0 0 12px rgba(255,255,255,0.2);
     }
 
     .btn {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 18px;
       padding: 10px 18px;
       border-radius: 10px;
 
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
       color: white;
-
       text-decoration: none;
-      font-weight: bold;
+      font-size: 0.95rem;
+      font-weight: 500;
+
       transition: all 0.25s ease;
       backdrop-filter: blur(10px);
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 0 15px rgba(255,255,255,0.25);
       transform: scale(1.05);
     }
   </style>
@@ -84,15 +103,10 @@
 
   <div class="card">
 
-    <!-- PROFILE IMAGE (unchanged) -->
-    <img src="a411aa.png" alt="Profile Image">
-
     <h1>Ludgecrone</h1>
 
-    <p>Click below to contact</p>
-
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
-      My only discord
+      Contact
     </a>
 
   </div>
