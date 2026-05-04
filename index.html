@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ludgecrone</title>
 
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
     * {
@@ -22,72 +26,68 @@
       color: white;
       overflow: hidden;
 
-      background: url("download (2).jpg") no-repeat center center fixed;
+      background: url("wallhaven-76xkvv_3840x2160.png") no-repeat center 55% fixed;
       background-size: cover;
     }
 
-    /* SOFT DARK OVERLAY */
+    /* OVERLAY */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.25),
         rgba(0,0,0,0.6)
       );
       z-index: 0;
     }
 
-    /* SUBTLE FLOATING LIGHT */
+    /* BACKGROUND MOTION */
     body::before {
       content: "";
       position: absolute;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
-      animation: floatBg 25s ease-in-out infinite;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 60%);
+      animation: drift 30s ease-in-out infinite;
       z-index: 0;
     }
 
-    @keyframes floatBg {
+    @keyframes drift {
       0% { transform: translate(0, 0); }
-      50% { transform: translate(-5%, -5%); }
+      50% { transform: translate(-4%, -4%); }
       100% { transform: translate(0, 0); }
     }
 
-    /* MAIN CARD */
+    /* CARD */
     .card {
       position: relative;
       z-index: 1;
 
-      width: 340px;
-      padding: 45px 35px;
+      width: 400px;
+      padding: 55px 45px;
 
-      border-radius: 18px;
+      border-radius: 20px;
 
-      background: rgba(25, 25, 30, 0.5);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(20, 20, 25, 0.45);
+      backdrop-filter: blur(14px);
 
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+
+      box-shadow: 
+        0 20px 60px rgba(0,0,0,0.6),
+        inset 0 0 0.5px rgba(255,255,255,0.08);
 
       text-align: center;
 
       animation: fadeUp 1s ease;
     }
 
-    /* SOFT FLOAT EFFECT */
-    .card:hover {
-      transform: translateY(-6px);
-      transition: 0.3s ease;
-    }
-
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(20px) scale(0.98);
+        transform: translateY(25px) scale(0.98);
       }
       to {
         opacity: 1;
@@ -97,45 +97,107 @@
 
     /* TITLE */
     h1 {
-      margin: 0 0 10px;
-      font-size: 2rem;
+      margin: 0;
+      font-size: 2.2rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
 
-      background: linear-gradient(90deg, #ffffff, #cfcfcf);
+      background: linear-gradient(90deg, #ffffff, #d6d6d6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      animation: glowFade 2s ease;
+      animation: softFade 1.5s ease;
     }
 
-    @keyframes glowFade {
+    @keyframes softFade {
       from {
         opacity: 0;
+        transform: translateY(10px);
         filter: blur(6px);
       }
       to {
         opacity: 1;
+        transform: translateY(0);
         filter: blur(0);
       }
+    }
+
+    /* SUBTEXT */
+    .subtitle {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ICON ROW */
+    .icons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .icon {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #e6edf3;
+      font-size: 1.1rem;
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      cursor: pointer;
+      overflow: hidden;
+
+      transition: all 0.25s ease;
+    }
+
+    /* RIPPLE EFFECT */
+    .icon::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+    }
+
+    .icon:hover::after {
+      width: 120px;
+      height: 120px;
+      opacity: 0.15;
+    }
+
+    .icon:hover {
+      transform: translateY(-3px) scale(1.05);
+      background: rgba(255,255,255,0.15);
     }
 
     /* BUTTON */
     .btn {
       display: inline-block;
-      margin-top: 18px;
-      padding: 10px 18px;
+      margin-top: 30px;
+      padding: 11px 22px;
       border-radius: 8px;
 
       background: rgba(255,255,255,0.08);
       color: #e6edf3;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 500;
 
       border: 1px solid rgba(255,255,255,0.12);
-
-      backdrop-filter: blur(10px);
 
       transition: all 0.25s ease;
     }
@@ -143,7 +205,6 @@
     .btn:hover {
       background: rgba(255,255,255,0.18);
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,255,255,0.15);
     }
 
   </style>
@@ -153,6 +214,21 @@
 
   <div class="card">
     <h1>Ludgecrone</h1>
+    <div class="subtitle">digital presence</div>
+
+    <div class="icons">
+      <a class="icon" href="https://discord.com/users/260466241309900811" target="_blank">
+        <i class="fab fa-discord"></i>
+      </a>
+
+      <a class="icon" href="#" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+
+      <a class="icon" href="#" target="_blank">
+        <i class="fas fa-globe"></i>
+      </a>
+    </div>
 
     <a class="btn" href="https://discord.com/users/260466241309900811" target="_blank">
       Contact
